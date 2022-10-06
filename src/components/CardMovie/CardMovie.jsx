@@ -63,7 +63,6 @@ const CardMovie = (props) => {
   return (
     <Card style={{ boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)' }}>
       <Image src={posterPath ? url : Noimage} alt={props.original_title} />
-      {/* <Col> */}
       <div className="header-card" style={{ display: 'flex', justifyContent: 'space-around' }}>
         <Title level={4}>{title}</Title>
         <div
@@ -92,7 +91,6 @@ const CardMovie = (props) => {
         value={myRating || currentValue}
         style={{ fontSize: '16px' }}
       />
-      {/* </Col> */}
     </Card>
   );
 };

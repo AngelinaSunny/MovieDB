@@ -1,5 +1,4 @@
 export default class ServicesMovie {
-  // eslint-disable-next-line class-methods-use-this
   async getServices(url, obj = null) {
     const res = await fetch(url, obj);
 

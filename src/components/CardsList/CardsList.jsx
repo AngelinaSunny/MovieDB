@@ -5,7 +5,6 @@ import CardMovie from '../CardMovie/CardMovie';
 
 const CardList = ({ cards, genres, guestSession }) => {
   const items = cards.map((item) => {
-    // eslint-disable-next-line prefer-const
     let tags = [];
 
     item.genre_ids.forEach((elem) => {

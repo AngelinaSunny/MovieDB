@@ -6,7 +6,6 @@ import ServicesMovie from '../../servicesMovie';
 import CardList from '../CardsList';
 import './App.css';
 
-// eslint-disable-next-line react/prefer-stateless-function
 export default class App extends Component {
   services = new ServicesMovie();
 
@@ -95,7 +94,7 @@ export default class App extends Component {
   async movieService(text, page = 1) {
     try {
       const resultObj = await this.services.getMovieServices(text, page);
-      console.log(resultObj);
+
       this.setState({
         cards: resultObj.results,
         isLoaded: true,

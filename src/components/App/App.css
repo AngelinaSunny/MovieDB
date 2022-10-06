@@ -11,6 +11,7 @@
 .ant-pagination-item-active a {
   color: #fff;
 }
+
 .ant-tabs-top > .ant-tabs-nav::before {
   width: 140px;
   margin-left: auto;
@@ -22,7 +23,7 @@
     width: 100vw;
     padding: 20px 16px;
     background-color: #fff;
-}
+  }
 }
 
 @media (min-width: 741px) {
@@ -31,5 +32,5 @@
      margin: auto;
      padding: 21px 32px;
      background-color: #fff;
-}
+  }
 }

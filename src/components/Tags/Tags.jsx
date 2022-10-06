@@ -2,7 +2,6 @@ import React from 'react';
 import { Tag } from 'antd';
 
 const Tags = ({ tags }) => {
-  // eslint-disable-next-line react/void-dom-elements-no-children
   const tag = tags.map((item) => (
     <Tag
       key={item.id}
