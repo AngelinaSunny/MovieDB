@@ -78,11 +78,6 @@
 }
 
 @media (min-width: 546px) {
-  .ant-space-item {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .ant-card-bordered {
     max-width: 454px;
     height: 279px;
