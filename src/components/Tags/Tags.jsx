@@ -1,21 +1,26 @@
 import React from 'react';
-import { Tag, Space } from 'antd';
+import { Tag } from 'antd';
 
 const Tags = ({ tags }) => {
   // eslint-disable-next-line react/void-dom-elements-no-children
   const tag = tags.map((item) => (
     <Tag
-      key={item.key}
-      style={{ border: '1ps solid #D9D9D9', borderRadius: '2px', color: 'rgba(0, 0, 0, 0.65)', background: '#FAFAFA' }}
+      key={item.id}
+      style={{
+        border: '1ps solid #D9D9D9',
+        borderRadius: '2px',
+        color: 'rgba(0, 0, 0, 0.65)',
+        background: '#FAFAFA',
+        lineHeight: '1.3em',
+        height: '20px',
+        fontSize: '12px',
+        marginBottom: '7px',
+      }}
     >
-      {item.value}
+      {item.name}
     </Tag>
   ));
-  return (
-    <Space size={8} wrap>
-      {tag}
-    </Space>
-  );
+  return <div className="tags">{tag}</div>;
 };
 
 export default Tags;

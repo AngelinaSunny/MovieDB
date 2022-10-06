@@ -1,0 +1,153 @@
+.ant-typography-secondary {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+} 
+
+.main-rate {
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 4px 1px;
+  min-width: 30px;
+  height: 30px;
+  text-align: center;
+  margin-left: auto; 
+}
+
+@media (max-width: 545px) {
+  .ant-card.ant-card-bordered {
+    width: 92vw;
+    height: 279px;
+    position: relative;
+  }
+
+  .ant-card-body {
+    display: grid;
+    grid-template-columns: 77px auto;
+    grid-template-rows: repeat(5, auto);
+    grid-template-areas: 'img head'
+                        'img date'
+                        'img tags'
+                        'desc desc'
+                        'rate rate';
+    padding: 6px 6px 0 10px;
+    margin: 0;
+    height: 279px;
+    justify-items: space-between;
+    align-content: start;
+  }
+ .ant-image {
+    height: 91px;
+    width: 60px;
+    margin-right: 17px;
+    grid-area: img;
+  }
+  .header-card {
+    grid-area: head;
+  }
+  
+  .ant-typography.ant-typography-secondary {
+    grid-area: date;
+   }
+
+  .tags {
+    grid-area: tags;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+    h4.ant-typography {
+    line-height: 28px;
+    margin-bottom: 0;
+    margin-right: 7px;
+  }
+
+  .ant-card-body>p {
+    width: 85vw;
+    grid-area: desc;
+    margin-bottom: 7px;
+  }
+
+  .ant-card-body .ant-rate {
+    position: absolute;
+    bottom: 10px;
+    right: 7px;
+    grid-area: rate;
+    margin-top: auto;
+  }
+}
+
+@media (min-width: 546px) {
+  .ant-space-item {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ant-card-bordered {
+    max-width: 454px;
+    height: 279px;
+    padding: 0;
+  }
+
+  .ant-card-body {   
+    display: grid;
+    max-width: 454px;
+    padding: 0;
+    margin: 0;
+    align-items: start;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto 24px auto auto;
+    grid-template-areas: 'img head'
+                         'img date'
+                         'img tags'
+                         'img desc';
+  }
+
+ .ant-image {
+    height: 279px;
+    width: 183px;
+    margin-right: 17px;
+    grid-area: img;
+  }
+
+  .header-card {
+    grid-area: head;
+    align-self: start;
+  }
+
+  .header-card>h4 {
+    width: 85%;
+    line-height: 28px;
+    margin: 10px 0 0 0;
+  }
+
+    .main-rate {
+    margin: 7px 7px 0 ;
+  }
+  
+  .ant-typography.ant-typography-secondary {
+    grid-area: date;
+    }
+
+  .tags {
+    grid-area: tags;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ant-card-body>p {
+    grid-area: desc;
+    margin-bottom: 17px;
+    margin-right: 7px;
+  }
+
+  .ant-card-body .ant-rate {
+    position: absolute;
+    width: 239px;
+    bottom: 10px;
+    right: 7px;
+    grid-area: rate;
+  }
+}
+
+

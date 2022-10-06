@@ -3,18 +3,32 @@ import React from 'react';
 
 import CardMovie from '../CardMovie/CardMovie';
 
-const CardList = ({ cards }) => {
-  const tags = [
-    { key: 101, value: 'detectiv' },
-    { key: 102, value: 'action' },
-  ];
-  const items = cards.map((item) => <CardMovie key={item.id} tags={tags} {...item} />);
+const CardList = ({ cards, genres, guestSession }) => {
+  const items = cards.map((item) => {
+    // eslint-disable-next-line prefer-const
+    let tags = [];
+
+    item.genre_ids.forEach((elem) => {
+      genres.forEach((el) => {
+        if (el.id === elem && tags.length < 4) {
+          tags.push(el);
+        }
+      });
+    });
+    return <CardMovie guestSession={guestSession} key={item.id} tags={tags} {...item} />;
+  });
+
+  const emptyResult = 'По данному запросу фильмов не найдено';
 
   return (
     <div className="space-align-container">
-      <Space size={35} style={{ width: '100%', flexWrap: 'wrap' }}>
-        {items}
-      </Space>
+      {cards.length === 0 ? (
+        <div style={{ width: '1010px', height: '90vh', fontSize: '20px' }}>{emptyResult}</div>
+      ) : (
+        <Space size={35} style={{ width: '100%', flexWrap: 'wrap', marginLeft: 'auto', marginRight: 'auto' }}>
+          {items}
+        </Space>
+      )}
     </div>
   );
 };

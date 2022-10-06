@@ -1,3 +1,8 @@
+#root {
+  font-family: 'Inter', sans-serif;
+
+}
+
 .ant-pagination-item-active {
   background-color: #1890FF;
   border-radius: 4px;
@@ -5,4 +10,26 @@
 
 .ant-pagination-item-active a {
   color: #fff;
+}
+.ant-tabs-top > .ant-tabs-nav::before {
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 740px) {
+  .ant-layout-content{
+    width: 100vw;
+    padding: 20px 16px;
+    background-color: #fff;
+}
+}
+
+@media (min-width: 741px) {
+  .ant-layout-content{
+     width: 70.14%;
+     margin: auto;
+     padding: 21px 32px;
+     background-color: #fff;
+}
 }
