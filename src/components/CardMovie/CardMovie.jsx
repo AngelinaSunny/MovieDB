@@ -1,14 +1,33 @@
 import { Card, Typography, Image, Rate } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { format } from 'date-fns';
+import PropTypes from 'prop-types';
 
 import Tags from '../Tags';
 import Services from '../../servicesMovie';
+import cutDescription from '../helpers/cutDescription';
 
 import Noimage from './noimage.jpeg';
+
 import './CardMovie.css';
 
 const CardMovie = (props) => {
+  CardMovie.defaultProps = {
+    id: null,
+    title: 'Нет названия',
+    overview: 'Скоро здесь будет описание',
+    guestSession: null,
+    vote_average: 0,
+  };
+
+  CardMovie.propTypes = {
+    id: PropTypes.number,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    guestSession: PropTypes.string,
+    vote_average: PropTypes.number,
+  };
+
   const { Title, Text } = Typography;
   const [currentValue, setCurrentValue] = useState();
   const { tags, id, title, overview, guestSession } = props;
@@ -41,29 +60,10 @@ const CardMovie = (props) => {
     date = format(new Date(props.release_date), 'PP');
   }
 
-  const description = (textTitle) => {
-    const len = textTitle.length;
-    const lenTag = props.tags.length;
-    let textLength = 135;
-    if (len >= 36 && lenTag > 3) {
-      textLength = 30;
-    } else if (len >= 36 && lenTag <= 3) {
-      textLength = 80;
-    } else if ((len < 36 && len > 18 && lenTag > 3) || (len >= 18 && lenTag > 3)) {
-      textLength = 95;
-    } else if ((len < 36 && len > 18 && lenTag <= 3) || (len > 18 && lenTag > 3)) {
-      textLength = 110;
-    } else if (len <= 18 && lenTag > 3) {
-      textLength = 125;
-    }
-
-    return `${overview.slice(0, overview.indexOf(' ', textLength))}${overview.length > textLength && '...'}`;
-  };
-
   return (
-    <Card style={{ boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)' }}>
+    <Card className="card">
       <Image src={posterPath ? url : Noimage} alt={props.original_title} />
-      <div className="header-card" style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div className="header-card">
         <Title level={4}>{title}</Title>
         <div
           className="main-rate"
@@ -75,12 +75,13 @@ const CardMovie = (props) => {
         </div>
       </div>
 
-      <Text type="secondary" style={{ marginBottom: '7px' }}>
+      <Text class-name="card-text" type="secondary">
         {date}
       </Text>
       <Tags tags={tags} key={id} id={id} />
-      <p>{description(desc)}</p>
+      <p>{cutDescription(desc, tags.length, overview)}</p>
       <Rate
+        className="card-rate"
         allowHalf
         count={10}
         defaultValue={myRating || 0}
@@ -89,7 +90,6 @@ const CardMovie = (props) => {
           services.postRate(guestSession, id, value);
         }}
         value={myRating || currentValue}
-        style={{ fontSize: '16px' }}
       />
     </Card>
   );

@@ -1,21 +1,17 @@
-import React from 'react';
 import { Tag } from 'antd';
+import PropTypes from 'prop-types';
+import './Tags.css';
 
 const Tags = ({ tags }) => {
+  Tags.defaultProps = {
+    tags: [],
+  };
+
+  Tags.propTypes = {
+    tags: PropTypes.array,
+  };
   const tag = tags.map((item) => (
-    <Tag
-      key={item.id}
-      style={{
-        border: '1ps solid #D9D9D9',
-        borderRadius: '2px',
-        color: 'rgba(0, 0, 0, 0.65)',
-        background: '#FAFAFA',
-        lineHeight: '1.3em',
-        height: '20px',
-        fontSize: '12px',
-        marginBottom: '7px',
-      }}
-    >
+    <Tag className="card-tag" key={item.id}>
       {item.name}
     </Tag>
   ));

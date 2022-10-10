@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { Layout, Input, Pagination, Alert, Spin, Tabs, Space } from 'antd';
+import { Component } from 'react';
+import { Layout, Alert, Tabs } from 'antd';
 import { debounce } from 'lodash';
 
 import ServicesMovie from '../../servicesMovie';
-import CardList from '../CardsList';
+import tabSearch from '../helpers/tabSearch';
+import tabRated from '../helpers/tabRated';
 import './App.css';
 
 export default class App extends Component {
@@ -27,6 +28,10 @@ export default class App extends Component {
       rateTotalPages: null,
       isLoadedRate: false,
     };
+
+    this.onChangeSearch = this.onChangeSearch.bind(this);
+    this.movieService = this.movieService.bind(this);
+    this.getRatedMovie = this.getRatedMovie.bind(this);
   }
 
   componentDidMount() {
@@ -130,78 +135,8 @@ export default class App extends Component {
       return <Alert message="Error" type="error" showIcon description={`Error: ${error}`} />;
     }
 
-    const tabSearch = () => {
-      if (!isLoaded) {
-        return (
-          <div className="example" style={{ width: '150vw', height: '150vh' }}>
-            <Space size="middle">
-              <Spin size="small" />
-              <Spin />
-              <Spin size="large" />
-            </Space>
-          </div>
-        );
-      }
-      return (
-        <>
-          <Input
-            onChange={this.onChangeSearch}
-            placeholder="Type to search..."
-            value={search}
-            style={{ marginBottom: '34px' }}
-          />
-          <CardList cards={cards} genres={genres} guestSession={guestSession} style={{ marginBottom: '36px' }} />
-          <Pagination
-            size="small"
-            total={totalPages}
-            defaultCurrent={1}
-            showSizeChanger={false}
-            onChange={(page) => {
-              this.movieService(sevSearch, page);
-            }}
-            style={{ margin: '36px auto 17px', textAlign: 'center' }}
-          />
-        </>
-      );
-    };
-
-    const tabRated = () => {
-      if (!isLoadedRate) {
-        return (
-          <div
-            className="example"
-            style={{
-              width: '100vw',
-              height: '100vh',
-            }}
-          >
-            <Space size="middle">
-              <Spin size="small" />
-              <Spin />
-              <Spin size="large" />
-            </Space>
-          </div>
-        );
-      }
-      return (
-        <>
-          <CardList cards={myRateMovie} genres={genres} guestSession={guestSession} style={{ marginBottom: '36px' }} />
-          <Pagination
-            size="small"
-            total={rateTotalPages}
-            defaultPageSize={ratePageSize}
-            defaultCurrent={1}
-            showSizeChanger={false}
-            onChange={(page) => {
-              this.getRatedMovie(guestSession, page);
-            }}
-            style={{ margin: '36px auto 17px', textAlign: 'center' }}
-          />
-        </>
-      );
-    };
     return (
-      <Layout style={{ maxWidth: '1440px', margin: 'auto', backgroundColor: '#E5E5E5' }}>
+      <Layout className="layout">
         <Content>
           <Tabs
             defaultActiveKey="1"
@@ -215,12 +150,30 @@ export default class App extends Component {
               {
                 label: 'Search',
                 key: '1',
-                children: tabSearch(),
+                children: tabSearch(
+                  isLoaded,
+                  search,
+                  cards,
+                  genres,
+                  guestSession,
+                  totalPages,
+                  sevSearch,
+                  this.onChangeSearch,
+                  this.movieService
+                ),
               },
               {
                 label: 'Rated',
                 key: '2',
-                children: tabRated(),
+                children: tabRated(
+                  isLoadedRate,
+                  myRateMovie,
+                  genres,
+                  guestSession,
+                  rateTotalPages,
+                  ratePageSize,
+                  this.getRatedMovie
+                ),
               },
             ]}
           />

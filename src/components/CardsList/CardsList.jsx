@@ -1,9 +1,22 @@
 import { Space } from 'antd';
-import React from 'react';
+import PropTypes from 'prop-types';
 
 import CardMovie from '../CardMovie/CardMovie';
+import './CardList.css';
 
 const CardList = ({ cards, genres, guestSession }) => {
+  CardList.defaultProps = {
+    cards: [{}],
+    genres: [{}],
+    guestSession: '',
+  };
+
+  CardList.propTypes = {
+    cards: PropTypes.arrayOf(PropTypes.object),
+    genres: PropTypes.arrayOf(PropTypes.object),
+    guestSession: PropTypes.string,
+  };
+
   const items = cards.map((item) => {
     let tags = [];
 
@@ -22,9 +35,9 @@ const CardList = ({ cards, genres, guestSession }) => {
   return (
     <div className="space-align-container">
       {cards.length === 0 ? (
-        <div style={{ width: '1010px', height: '90vh', fontSize: '20px' }}>{emptyResult}</div>
+        <div className="empty">{emptyResult}</div>
       ) : (
-        <Space size={35} style={{ width: '100%', flexWrap: 'wrap', marginLeft: 'auto', marginRight: 'auto' }}>
+        <Space className="space" size={35}>
           {items}
         </Space>
       )}

@@ -50,10 +50,10 @@
         "depth": 3
       }
     ],
-    "class-methods-use-this": ["error", { "exceptMethods": ["getServices"] }],
-    "jsx-a11y/no-autofocus": "off",
-    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "class-methods-use-this": ["error", { "exceptMethods": ["filterItems"] }],
     "prefer-const": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "prettier/prettier": "error",
     "linebreak-style": [0, "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
