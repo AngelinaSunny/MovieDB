@@ -50,10 +50,11 @@
         "depth": 3
       }
     ],
-    "class-methods-use-this": ["error", { "exceptMethods": ["filterItems"] }],
-    "prefer-const": "off",
+    "class-methods-use-this": ["error", { "exceptMethods": [ "ServicesMovie", "getServices"] }],
+    "react/forbid-prop-types": "off",
     "jsx-a11y/no-autofocus": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "prefer-const": "off",
     "linebreak-style": [0, "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
