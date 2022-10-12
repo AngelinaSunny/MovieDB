@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Tags from '../Tags';
 import Services from '../../servicesMovie';
-import cutDescription from '../helpers/cutDescription';
+import cutDescription from '../../helpers/cutDescription';
 
 import Noimage from './noimage.jpeg';
 

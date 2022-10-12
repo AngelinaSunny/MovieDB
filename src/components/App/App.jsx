@@ -3,8 +3,8 @@ import { Layout, Alert, Tabs } from 'antd';
 import { debounce } from 'lodash';
 
 import ServicesMovie from '../../servicesMovie';
-import tabSearch from '../helpers/tabSearch';
-import tabRated from '../helpers/tabRated';
+import tabSearch from '../../helpers/tabSearch';
+import tabRated from '../../helpers/tabRated';
 import './App.css';
 
 export default class App extends Component {

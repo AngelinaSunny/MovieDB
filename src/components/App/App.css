@@ -35,22 +35,24 @@
 }
 
 .layout {
-  max-width: 1440px;
-  margin: auto;
   background-color: #E5E5E5;
 }
 
-@media (max-width: 740px) {
+@media (max-width: 1025px) {
   .ant-layout-content{
     width: 100vw;
+    justify-content: space-between;
     padding: 20px 16px;
     background-color: #fff;
   }
+  .space {
+    justify-content: center;
+  }
 }
 
-@media (min-width: 741px) {
+@media (min-width: 1026px) {
   .ant-layout-content{
-     width: 70.14%;
+     max-width: 1010px;
      margin: auto;
      padding: 21px 32px;
      background-color: #fff;
